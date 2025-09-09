@@ -36,12 +36,15 @@
 }
 
   #about {
-    height:1000px;
+    height:1100px;
+    text-algin:left;
+    
   }
 
   #about p{
     padding: 5px 12px;
     font-size:19px;
+    text-algin:left;
   }
   #about .buttons{
     height: 40%;
