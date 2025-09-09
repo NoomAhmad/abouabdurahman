@@ -35,6 +35,14 @@
     
 }
 
+  #about {
+    height:900px;
+  }
+
+  #about p{
+    padding: 5px 12px;
+  }
+
   
 
 }
