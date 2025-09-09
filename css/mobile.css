@@ -29,9 +29,9 @@
 
 .header .button{
     width: 80%;
-    padding: 10px 7px;
+    padding: 16px 7px;
     margin: 12px;
-    font-size: 17px;
+    font-size: 18px;
     
 }
 
@@ -41,7 +41,22 @@
 
   #about p{
     padding: 5px 12px;
+    font-size:19px;
   }
+  #about .buttons{
+    height: 40%;
+    width:80%;
+
+}
+
+#about .button{
+    width: 80%;
+    padding: 16px 7px;
+    margin: 12px;
+    font-size: 18px;
+    
+}
+  
 
   
 
