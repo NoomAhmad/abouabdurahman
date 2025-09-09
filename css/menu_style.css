@@ -57,6 +57,7 @@
 
 .logo a{
     color:#02a152;
+    text-align:left;
 }
 .nav-links {
     display: flex;
