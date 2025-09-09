@@ -2,4 +2,23 @@
   .header{
     height:800px;
   }
+  .header .text-header {
+    height: 90%;
+    width:100%;
+}
+
+.header .Big-Title{
+    height: 70%;
+    width:100%;
+    position: relative;
+}
+
+
+.header .Big-Title h2{
+    color: #fff;
+    font-size: 30px;
+    line-height:2;
+    padding: 10px 0px ;
+}
+
 }
