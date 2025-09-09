@@ -21,8 +21,20 @@
     padding: 10px 0px ;
 }
 
-  .header .button{
-    width:80%;
-  }
+  .header .buttons{
+    height: 40%;
+    width:100%;
+
+}
+
+.header .button{
+    width: 80%;
+    padding: 10px 7px;
+    margin: 12px;
+    font-size: 17px;
+    
+}
+
+  
 
 }
