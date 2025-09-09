@@ -1,4 +1,4 @@
-@media screen and(max-with:900px){
+@media screen and(max-width:900px){
   .header{
     height:800px;
   }
