@@ -209,17 +209,154 @@
     </div>
 
     </div>
-    <div id="blogs">
-
-       <script src="https://rss.app/feeds/v1.1/OON3E37JwoQPfETL.json"> 
-           
-       </script>
     
-        <!--
-        <div id="retainable-rss-embed" data-rss="https://medium.com/feed/@noom_pc" data-maxcols="1" data-layout="grid" data-poststyle="inline" data-readmore="قراءة المزيد" data-buttonclass="btn btn-primary" data-offset="-100" ></div>
-        <script src="https://www.twilik.com/assets/retainable/rss-embed/retainable-rss-embed.js"></script>
-         -->
+        <div class="articles-container">
+        <div class="articles-header">
+            <h2>Latest Medium Articles</h2>
+            <p>Recent posts from my Medium publication</p>
+        </div>
+        <div id="articles-list">
+            <div class="loading">
+                <div class="spinner"></div>
+                Loading recent articles...
+            </div>
+        </div>
     </div>
+
+    <script>
+        async function fetchMediumArticles(maxArticles = 5) {
+            try {
+                const rssUrl = 'https://medium.com/feed/@noom_pc'; // 👈 CHANGE THIS
+                
+                // JSONP method works best for Google Sites
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    const callbackName = 'rssCallback' + Date.now();
+                    
+                    window[callbackName] = function(data) {
+                        document.head.removeChild(script);
+                        delete window[callbackName];
+                        if (data.status === 'ok') {
+                            resolve(data.items.slice(0, maxArticles));
+                        } else {
+                            reject(new Error('RSS2JSON JSONP failed'));
+                        }
+                    };
+                    
+                    script.src = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&callback=${callbackName}`;
+                    script.onerror = () => {
+                        document.head.removeChild(script);
+                        delete window[callbackName];
+                        reject(new Error('Script load failed'));
+                    };
+                    
+                    document.head.appendChild(script);
+                    
+                    setTimeout(() => {
+                        if (window[callbackName]) {
+                            document.head.removeChild(script);
+                            delete window[callbackName];
+                            reject(new Error('Timeout'));
+                        }
+                    }, 10000);
+                });
+                
+            } catch (error) {
+                console.error('Fetch error:', error);
+                throw error;
+            }
+        }
+        
+        function extractThumbnailFromDescription(description) {
+            const imgRegex = /<img[^>]+src="([^">]+)"/;
+            const match = description.match(imgRegex);
+            return match && match[1] ? match[1] : null;
+        }
+        
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+        
+        function truncateText(text, maxLength = 200) {
+            if (text.length <= maxLength) return text;
+            return text.substr(0, maxLength).substr(0, text.lastIndexOf(' ')) + '...';
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+        
+        function displayArticles(articles) {
+            const articlesContainer = document.getElementById('articles-list');
+            
+            if (!articles || articles.length === 0) {
+                articlesContainer.innerHTML = '<div class="error">No articles found.</div>';
+                return;
+            }
+            
+            const articlesHtml = articles.map(article => {
+                const cleanDescription = stripHtml(article.description || article.content || '');
+                const truncatedDescription = truncateText(cleanDescription);
+                const formattedDate = formatDate(article.pubDate);
+                
+                const thumbnailUrl = extractThumbnailFromDescription(article.description || article.content || '');
+                const finalThumbnail = thumbnailUrl || article.thumbnail;
+                
+                const imageHtml = finalThumbnail ? 
+                    `<div class="article-image">
+                        <img src="${finalThumbnail}" alt="${article.title}" loading="lazy" onerror="this.parentElement.style.display='none'">
+                    </div>` : '';
+                
+                const descriptionHtml = truncatedDescription && truncatedDescription.length > 10 ? 
+                    `<p class="article-description">${truncatedDescription}</p>` : '';
+                
+                return `
+                    <article class="article">
+                        ${imageHtml}
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="${article.link}" target="_blank" rel="noopener noreferrer">
+                                    ${article.title}
+                                </a>
+                            </h3>
+                            ${descriptionHtml}
+                            <div class="article-meta">
+                                <span class="article-date">${formattedDate}</span>
+                                <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="read-more">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+            
+            articlesContainer.innerHTML = articlesHtml;
+        }
+        
+        function displayError(message) {
+            const articlesContainer = document.getElementById('articles-list');
+            articlesContainer.innerHTML = `<div class="error">Error: ${message}</div>`;
+        }
+        
+        async function init() {
+            try {
+                const articles = await fetchMediumArticles();
+                displayArticles(articles);
+            } catch (error) {
+                displayError('Unable to load articles. Please check your Medium username.');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 
 
 
@@ -275,6 +412,7 @@
 
 
 </html>
+
 
 
 
