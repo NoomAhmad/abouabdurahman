@@ -53,8 +53,14 @@
     font-size:19px;
     text-align:left;
   }
+
+  #about iframe{
+    height: 350px;
+    width:90%;
+  }
+ 
   #about .buttons{
-    height: 30%;
+    height: 20%;
     width:80%;
 
 }
