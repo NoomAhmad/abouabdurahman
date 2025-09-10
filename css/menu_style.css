@@ -220,6 +220,13 @@
 }
 
 @media (max-width: 1000px) {
+    .navbar-container {
+      justify-content: space-between;
+      align-items: left;
+      max-width: 100%;
+        padding:12px;
+      margin: 0 auto;
+    }
     .nav-links {
         position: fixed;
         top: -20px;
