@@ -30,7 +30,7 @@
   .header .buttons{
     height: 40%;
     width:80%;
-
+    
 }
 
 .header .button{
@@ -43,20 +43,19 @@
 
   #about {
     height:auto;
-    text-align:left;
-    align-Items:left;
+    padding:30px 5px 30px 5px;
     
   }
 
-  #about p{
-    padding: 5px 7px 5px 12px;
+  #about p {
     font-size:19px;
-    text-align:left;
+    text-align:center;
   }
 
   #about iframe{
     height: 350px;
     width:90%;
+   margin: 20px 0px;
   }
  
   #about .buttons{
