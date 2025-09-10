@@ -50,10 +50,7 @@
             margin: 0;
         }
         #articles-list{
-            display:flex;
-            flex-direction:column;
-            align-Items: center;
-            text-align:center;
+            place-items: center;
             width:80%;
         }
         .article {
@@ -181,7 +178,7 @@
         
         @media (max-width: 900px) {
             .article-content { padding: 60px 12px; }
-            .article { width:100%;}
+            #articles-list { width:100%;}
             .article-title { font-size: 18px; }
             .article-meta { flex-direction: column; gap: 10px; align-items: flex-start; }
             .article-image { height: 200px; width:100%; }
@@ -420,6 +417,7 @@
 
 
 </html>
+
 
 
 
