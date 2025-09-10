@@ -1,0 +1,374 @@
+Open in app
+Sidebar menu
+
+Neama Ahmad
+Press enter or click to view image in full size
+
+How to Display Your Medium Article Feed on Your Website (with Images!)
+Deb Murphy
+Deb Murphy
+
+
+Follow
+11 min read
+·
+Jun 4, 2025
+
+Listen
+
+
+Share
+
+
+More
+
+Want to embed and showcase your Medium articles on your personal website? I was hunting for this exact feature for my new site but couldn’t find any working solutions anywhere. So I teamed up with my AI assistant Claude to figure it out from scratch!
+
+The widget pulls from your Medium RSS feed (so it automatically updates when you publish), but here’s the thing — RSS feeds don’t include images. Since I really wanted those eye catching Medium images to show up, we had to get creative with the extraction process.
+
+After some trial and error, we built this HTML widget that automatically grabs your latest posts complete with images and descriptions. The tricky part? Different hosting platforms needed different approaches. My Google Sites required one method, while my Systeme.io sites needed another. But don’t worry, one of these versions should work for whatever platform you’re using!
+
+See it in action:
+
+Google Sites example
+Systeme.io example
+I’ve got both code versions below with step-by-step instructions. Just copy, paste, and don’t forget to customize with your own Medium feed details (instructions included below). If the first version doesn’t play nice with your hosting platform, try the second one!
+
+Make sure to follow the setup instructions to add your specific RSS feed URL, or you’ll just see placeholder content.
+Stuck on implementation? Feel free to reach out — I’m happy to help you get this working on your site!
+
+What You’ll Hope To Get When You Add this Code
+✅ Automatic updates when you publish new articles
+✅ Article images and descriptions
+✅ Responsive design that works on mobile and desktop
+✅ Clean, modern card-based layout
+✅ Works on Google Sites, Systeme.io, *should* work on WordPress, and more (I only tested Google Sites and Systeme.io)
+Step 1: Find Your Medium RSS Feed
+Your Medium RSS feed is located at one of these URLs, the version depends on how you have your profile set to display. to find out, go to your profile and look at the url. Then simply insert “feed” in the correct position, like this:
+
+https://medium.com/feed/@YOURUSERNAME
+https://YOURUSERNAME.medium.com/feed
+Obviously, YOU MUST replace YOURUSERNAME in the code below with your actual Medium username, or it won’t work.
+
+Step 2: Choose Your Code Version
+For Google Sites
+Use this version if you’re hosting on Google Sites:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Medium Articles</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #ffffff;
+            color: #333;
+        }
+        
+        .articles-container {
+            max-width: 100%;
+        }
+        
+        .articles-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .articles-header h2 {
+            color: #1a1a1a;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+        
+        .articles-header p {
+            color: #757575;
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .article {
+            border: 1px solid #e6e6e6;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+        
+        .article:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-color: #00ab6c;
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .article:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .article-content {
+            padding: 24px;
+        }
+        
+        .article-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .article-title a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .article-title a:hover {
+            color: #00ab6c;
+        }
+        
+        .article-description {
+            color: #6b6b6b;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #8a8a8a;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 16px;
+        }
+        
+        .article-date {
+            font-weight: 500;
+        }
+        
+        .read-more {
+            color: #00ab6c;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #00ab6c;
+        }
+        
+        .read-more:hover {
+            background: #00ab6c;
+            color: white;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #e74c3c;
+            background: #fdf2f2;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #00ab6c;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .article-content { padding: 20px; }
+            .article-title { font-size: 18px; }
+            .article-meta { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .article-image { height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="articles-container">
+        <div class="articles-header">
+            <h2>Latest Medium Articles</h2>
+            <p>Recent posts from my Medium publication</p>
+        </div>
+        <div id="articles-list">
+            <div class="loading">
+                <div class="spinner"></div>
+                Loading recent articles...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchMediumArticles(maxArticles = 5) {
+            try {
+                const rssUrl = 'https://medium.com/feed/@noom_pc'; // 👈 CHANGE THIS
+                
+                // JSONP method works best for Google Sites
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    const callbackName = 'rssCallback' + Date.now();
+                    
+                    window[callbackName] = function(data) {
+                        document.head.removeChild(script);
+                        delete window[callbackName];
+                        if (data.status === 'ok') {
+                            resolve(data.items.slice(0, maxArticles));
+                        } else {
+                            reject(new Error('RSS2JSON JSONP failed'));
+                        }
+                    };
+                    
+                    script.src = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&callback=${callbackName}`;
+                    script.onerror = () => {
+                        document.head.removeChild(script);
+                        delete window[callbackName];
+                        reject(new Error('Script load failed'));
+                    };
+                    
+                    document.head.appendChild(script);
+                    
+                    setTimeout(() => {
+                        if (window[callbackName]) {
+                            document.head.removeChild(script);
+                            delete window[callbackName];
+                            reject(new Error('Timeout'));
+                        }
+                    }, 10000);
+                });
+                
+            } catch (error) {
+                console.error('Fetch error:', error);
+                throw error;
+            }
+        }
+        
+        function extractThumbnailFromDescription(description) {
+            const imgRegex = /<img[^>]+src="([^">]+)"/;
+            const match = description.match(imgRegex);
+            return match && match[1] ? match[1] : null;
+        }
+        
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+        
+        function truncateText(text, maxLength = 200) {
+            if (text.length <= maxLength) return text;
+            return text.substr(0, maxLength).substr(0, text.lastIndexOf(' ')) + '...';
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+        
+        function displayArticles(articles) {
+            const articlesContainer = document.getElementById('articles-list');
+            
+            if (!articles || articles.length === 0) {
+                articlesContainer.innerHTML = '<div class="error">No articles found.</div>';
+                return;
+            }
+            
+            const articlesHtml = articles.map(article => {
+                const cleanDescription = stripHtml(article.description || article.content || '');
+                const truncatedDescription = truncateText(cleanDescription);
+                const formattedDate = formatDate(article.pubDate);
+                
+                const thumbnailUrl = extractThumbnailFromDescription(article.description || article.content || '');
+                const finalThumbnail = thumbnailUrl || article.thumbnail;
+                
+                const imageHtml = finalThumbnail ? 
+                    `<div class="article-image">
+                        <img src="${finalThumbnail}" alt="${article.title}" loading="lazy" onerror="this.parentElement.style.display='none'">
+                    </div>` : '';
+                
+                const descriptionHtml = truncatedDescription && truncatedDescription.length > 10 ? 
+                    `<p class="article-description">${truncatedDescription}</p>` : '';
+                
+                return `
+                    <article class="article">
+                        ${imageHtml}
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="${article.link}" target="_blank" rel="noopener noreferrer">
+                                    ${article.title}
+                                </a>
+                            </h3>
+                            ${descriptionHtml}
+                            <div class="article-meta">
+                                <span class="article-date">${formattedDate}</span>
+                                <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="read-more">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+            
+            articlesContainer.innerHTML = articlesHtml;
+        }
+        
+        function displayError(message) {
+            const articlesContainer = document.getElementById('articles-list');
+            articlesContainer.innerHTML = `<div class="error">Error: ${message}</div>`;
+        }
+        
+        async function init() {
+            try {
+                const articles = await fetchMediumArticles();
+                displayArticles(articles);
+            } catch (error) {
+                displayError('Unable to load articles. Please check your Medium username.');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
