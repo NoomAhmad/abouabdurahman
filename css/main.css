@@ -192,7 +192,7 @@ a {
   font-size:18px;
   padding: 12px 100px;
   text-align: center;
-  line-height: 2;
+  line-height: 1.8;
   color:#fff;
 }
 
@@ -287,8 +287,8 @@ a {
     flex-wrap:wrap;
     background: rgba(256,256,256,0.5);
     padding:12px;
-    height:140px;
-    width:70%;
+    height:auto;
+    width:80%;
     padding: 12px;
     border-radius:5px;
     text-align:center;
@@ -454,6 +454,7 @@ a {
    
   }
     
+
 
 
 
