@@ -50,6 +50,7 @@
   #about p {
     font-size:19px;
     text-align:center;
+    padding: 8px 15px;
   }
 
   #about iframe{
