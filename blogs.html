@@ -28,7 +28,11 @@
         }
         
         .articles-container {
-            max-width: 95%;
+            display:inline-flex;
+            flex-direction:column;
+            align-Items:center;
+            
+            max-width: 100%;
         }
         
         .articles-header {
@@ -67,7 +71,7 @@
         
         .article-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             overflow: hidden;
             background: #f8f9fa;
         }
@@ -174,8 +178,8 @@
         @media (max-width: 900px) {
             .article-content { padding: 20px; }
             .article-title { font-size: 18px; }
-            .article-meta { flex-direction: column; gap: 10px; align-items: center; }
-            .article-image { height: 250px; }
+            .article-meta { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .article-image { height: 200px; }
         }
     </style>
 
@@ -411,6 +415,7 @@
 
 
 </html>
+
 
 
 
