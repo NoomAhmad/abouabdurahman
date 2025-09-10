@@ -28,10 +28,7 @@
         }
         
         .articles-container {
-            display:flex;
-            flex-direction:column;
-            align-Items:center;
-            padding: 5px 12px;
+            padding: 40px 12px;
             width: 100%;
         }
         
@@ -176,7 +173,7 @@
         }
         
         @media (max-width: 900px) {
-            .article-content { padding: 20px; }
+            .article-content { padding: 40px 12px; }
             .article-title { font-size: 18px; }
             .article-meta { flex-direction: column; gap: 10px; align-items: flex-start; }
             .article-image { height: 200px; }
@@ -211,7 +208,7 @@
 
     </div>
 
-    <div id="post">
+
     
         <div class="articles-container">
         <div class="articles-header">
@@ -225,7 +222,7 @@
             </div>
         </div>
     </div>
-  </div>
+  
     <script>
         async function fetchMediumArticles(maxArticles = 5) {
             try {
@@ -415,6 +412,7 @@
 
 
 </html>
+
 
 
 
