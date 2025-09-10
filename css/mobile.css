@@ -23,7 +23,7 @@
 .header .Big-Title h2{
     color: #fff;
     font-size: 32px;
-    line-height:1.8;
+    line-height:1.6;
     padding: 10px 0px ;
 }
 
@@ -51,6 +51,7 @@
     font-size:19px;
     text-align:center;
     padding: 8px 15px;
+   line-height:1.8;
   }
 
   #about iframe{
