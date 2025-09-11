@@ -403,7 +403,7 @@ a {
       color:#fff;
       font-size: 15px;
       border-top: 1px solid #888;
-    
+      bottom:0;
     }
 
     .copyright p{
@@ -462,6 +462,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
