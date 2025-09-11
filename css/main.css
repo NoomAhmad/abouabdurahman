@@ -59,7 +59,7 @@ a {
     align-items: center;
     justify-content:center;
     flex-wrap: wrap;
-    height: 60%;
+    height: 40%;
     width:80%;
 }
 
@@ -175,13 +175,14 @@ a {
     align-items: center;
     justify-content: center;
     flex-wrap:wrap;
-    height: 20%;
+    height: 30%;
     width:75%;
     color: #fcfcfc;
     text-align:center;
-    font-size: 20px;
+    font-size: 22px;
     position: relative;
     z-index: 2;
+    padding:10px 0px 20px 0px;
 }
 
 
@@ -464,6 +465,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
