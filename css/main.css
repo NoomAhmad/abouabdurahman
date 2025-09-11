@@ -177,9 +177,9 @@ a {
     flex-wrap:wrap;
     height: 30%;
     width:75%;
-    color: #fcfcfc;
+    color: #fcfccc;
     text-align:center;
-    font-size: 22px;
+    font-size: 19px;
     position: relative;
     z-index: 2;
     padding:20px 0px 60px 0px;
@@ -465,6 +465,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
