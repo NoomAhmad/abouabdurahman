@@ -44,9 +44,8 @@
  .header #quoteDisplay{
     height: 30%;
     width:90%;
-    color: #fff;
     text-align:center;
-    font-size: 22px;
+    font-size: 18px;
 }
 
   #about {
