@@ -5,6 +5,7 @@
 @font-face {
     font-family:"JF Flat Regular";
     src: url("../JF_Flat.ttf");
+    src: url("../JF-Flat-Regular.ttf");
 }
 
 /*BASIC STYLES
@@ -469,6 +470,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
