@@ -38,7 +38,7 @@
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-    background-color:red;
+
 }
 
 .logo {
@@ -65,7 +65,6 @@
     display: flex;
     gap: 2.5rem;
     list-style: none;
-    background-color:green;
 }
 
 .nav-links a {
@@ -77,7 +76,7 @@
     transition: all 0.3s ease;
     font-size: 16px;
     letter-spacing: 0.3px;
-    background-color:#ccc;
+    
 }
 
 .logo a:hover{
@@ -298,11 +297,12 @@
         width: 24px;
     }
 
-    .nav-links .focus-btn{
-      padding: 9px 50px 9px 20px;
-    
-    }
 
+    
+     .nav-links .set-menu .focus-btn{
+         padding: 6px 50px 6px 12px;
+     }
+    
     .overlay {
         position: fixed;
         top: 0;
