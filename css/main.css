@@ -182,7 +182,8 @@ a {
     font-size: 19px;
     position: relative;
     z-index: 2;
-    padding:20px 0px 60px 0px;
+    line-height:1.5;
+    padding:20px 0px 120px 0px;
 }
 
 
@@ -465,6 +466,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
