@@ -48,7 +48,6 @@ a {
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 100%;
     width:100%;
 }
@@ -66,12 +65,10 @@ a {
 
 
 
-
-
 .header .Big-Title{
     display:flex;
     flex-direction:column;
-    align-items: center;
+    align-tems: center;
     justify-content: center;
     flex-wrap: wrap;
     border: 2px solid #ccc;
@@ -109,7 +106,6 @@ a {
     background-position:center;
     background-repeat:no-repeat;
     background-size:cover;
-
   }
 
   /* Overlay color */
@@ -468,6 +464,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
