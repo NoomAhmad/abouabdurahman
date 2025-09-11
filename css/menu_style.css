@@ -221,7 +221,7 @@
 
 @media (max-width: 1000px) {
     .navbar {
-        padding: 20px 8px 20px 5px;
+        padding: 20px 10px 20px 7px;
     }
     .nav-links {
         position: fixed;
