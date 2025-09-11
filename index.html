@@ -126,7 +126,7 @@
     <script>document.getElementById("year").innerHTML=(new Date().getFullYear())</script>
  </div> 
 
-<!--random qoutes-->  
+<!--random qoutes--> 
 <script>
         const quotes = [
             "قال رسول الله صلى الله عليه وسلم: (أنا وكافل اليتيم في الجنة هكذا وأشار بالسبابة والوسطى وفرج بينهما)",
@@ -137,12 +137,12 @@
 
         function displayRandomQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
-            const  = quotes[randomIndex];
+            const randomQuote = quotes[randomIndex];
             document.getElementById('quoteDisplay').textContent = randomQuote;
         }
 
         window.onload = displayRandomQuote;
-    </script>
+</script>
 
  <!--translation-->
 <div class="gtranslate_wrapper"></div>
@@ -190,6 +190,7 @@
 
 
 </html>
+
 
 
 
