@@ -169,6 +169,18 @@ a {
 
 }
 
+.header #quoteDisplay{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:wrap;
+    height: 30%;
+    width:80%;
+    color: #fcfcfc;
+    text-align:center;
+}
+
 
 #about {
     display:flex;
@@ -449,6 +461,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
