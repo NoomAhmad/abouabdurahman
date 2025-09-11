@@ -176,9 +176,10 @@ a {
     justify-content: center;
     flex-wrap:wrap;
     height: 30%;
-    width:80%;
-    color: #fcfcfc;
+    width:70%;
+    color: #333;
     text-align:center;
+    font-size: 18px;
 }
 
 
@@ -461,6 +462,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
