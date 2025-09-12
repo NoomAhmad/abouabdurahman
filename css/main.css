@@ -373,17 +373,17 @@ a {
       color: #b12381;
     }
 
-    /* snapchat Button Styling */
-  .fa-snapchat {
+    /* whatsapp Button Styling */
+  .fa-whatsapp {
     font-size: 35px;
-    background-color: #ffe260;
+    background-color: #075E54;
     color: #ffffff;
-    border-color: #ffe260;
+    border-color: #075E54;
     
   }
-  .fa-snapchat:hover {
+  .fa-whatsapp:hover {
     background-color: #ffffff;
-    color:#ffe260;
+    color:#075E54;
   }
    
   
@@ -470,6 +470,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
