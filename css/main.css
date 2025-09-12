@@ -376,14 +376,14 @@ a {
     /* whatsapp Button Styling */
   .fa-whatsapp {
     font-size: 35px;
-    background-color: #25D366;
+    background-color: #075E54;
     color: #ffffff;
-    border-color: #25D366;
+    border-color: #075E54;
     
   }
   .fa-whatsapp:hover {
     background-color: #ffffff;
-    color:#25D366;
+    color:#075E54;
   }
    
   
@@ -470,6 +470,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
