@@ -373,17 +373,17 @@ a {
       color: #b12381;
     }
 
-    /* whatsapp Button Styling */
-  .fa-whatsapp {
+    /* pinterest Button Styling */
+  .fa-pinterest {
     font-size: 35px;
-    background-color: #075E54;
+    background-color: #E60023;
     color: #ffffff;
-    border-color: #075E54;
+    border-color: #E60023;
     
   }
-  .fa-whatsapp:hover {
+  .fa-pinterest:hover {
     background-color: #ffffff;
-    color:#075E54;
+    color:#E60023;
   }
    
   
@@ -470,6 +470,7 @@ a {
     background-color: #fcfcfc;
     
 }
+
 
 
 
