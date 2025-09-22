@@ -229,7 +229,7 @@
     </div>
   
     <script>
-        async function fetchMediumArticles(maxArticles = 500) {
+        async function fetchMediumArticles(maxArticles = 100) {
             try {
                 const rssUrl = 'https://medium.com/feed/@abouabdurahman33'; // 👈 CHANGE THIS
                 
@@ -241,10 +241,11 @@
                     window[callbackName] = function(data) {
                         document.head.removeChild(script);
                         delete window[callbackName];
+
+        
                         if (data.status === 'ok') {
-                            
-                            resolve(data.items); // ignore maxArticles, show all available
-                         }
+                            resolve(data.items.slice(0, maxArticles));
+                        }
                         
                          else {
                             reject(new Error('RSS2JSON JSONP failed'));
@@ -420,6 +421,7 @@
 
 
 </html>
+
 
 
 
