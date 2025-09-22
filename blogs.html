@@ -242,8 +242,12 @@
                         document.head.removeChild(script);
                         delete window[callbackName];
                         if (data.status === 'ok') {
-                            resolve(data.items.slice(0, maxArticles));
-                        } else {
+                            
+                        if (data.status === 'ok') {
+                            resolve(data.items); // ignore maxArticles, show all available
+                         }
+                        
+                         else {
                             reject(new Error('RSS2JSON JSONP failed'));
                         }
                     };
@@ -417,6 +421,7 @@
 
 
 </html>
+
 
 
 
